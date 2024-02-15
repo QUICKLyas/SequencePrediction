@@ -1,8 +1,7 @@
 import requests
-import util.file as u_file
-import config as cfg
 import json
-import time
+from util import file as u_file
+from pyrep.config import config as cfg
 
 
 class WebRep:
@@ -59,8 +58,8 @@ class WebRep:
                 'WinningNum': list_item
             }
             data.append(dict_data)
-        for item in data:
-            print(item)
+        # for item in data:
+        #     print(item)
         return data
 
     @staticmethod
@@ -72,6 +71,5 @@ class WebRep:
         if bool_flag:
             print("save success!")
         else:  # non file write after create
-            self.write_text(list_data)
+            self.write_text(list_data=list_data)
         return
-
