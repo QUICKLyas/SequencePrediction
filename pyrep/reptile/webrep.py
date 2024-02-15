@@ -1,6 +1,6 @@
 import requests
 import json
-from util import file as u_file
+from pyrep.util import file as u_file
 from pyrep.config import config as cfg
 
 
@@ -35,19 +35,20 @@ class WebRep:
             back_winning_num = item['backWinningNum']
             issue = item['issue']
             open_time = item['openTime']
-            index_start = 0
-            index_end = 2
             step = 3
             list_item = []
-            while index_end < 14:
-                # 0-2 3-5 6-8 9-11 12-14
+            # 0-2 3-5 6-8 9-11 12-14
+            index_start = 0
+            index_end = 2
+            while index_end < 15:
                 int_num = int(front_winning_num[index_start:index_end])
                 list_item.append(int_num)
                 index_start += step
                 index_end += step
             index_start = 0
             index_end = 2
-            while index_end < 5:
+
+            while index_end < 6:
                 int_num = int(back_winning_num[index_start:index_end])
                 list_item.append(int_num)
                 index_start += step
@@ -68,8 +69,6 @@ class WebRep:
             return
         # write data into file (name "dataKJHM.json") dictionary_list
         bool_flag = u_file.write_json_file(list_data)
-        if bool_flag:
-            print("save success!")
-        else:  # non file write after create
+        if not bool_flag:
             self.write_text(list_data=list_data)
         return
