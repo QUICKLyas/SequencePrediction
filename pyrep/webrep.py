@@ -1,5 +1,5 @@
 import requests
-from bs4 import BeautifulSoup
+import util.file as u_file
 import config as cfg
 import json
 import time
@@ -28,12 +28,14 @@ class WebRep:
         return list_data
 
     @staticmethod
-    def parse_text (self, list_data: list) -> list:
+    def parse_text(self, list_data: list) -> list:
         data = []
         for item in list_data:
             # ['frontWinningNum'] ['backWinningNum']
             front_winning_num = item['frontWinningNum']
             back_winning_num = item['backWinningNum']
+            issue = item['issue']
+            open_time = item['openTime']
             index_start = 0
             index_end = 2
             step = 3
@@ -51,11 +53,25 @@ class WebRep:
                 list_item.append(int_num)
                 index_start += step
                 index_end += step
-            data.append(list_item)
+            dict_data = {
+                'issue': issue,
+                'openTime': open_time,
+                'WinningNum': list_item
+            }
+            data.append(dict_data)
         for item in data:
             print(item)
         return data
 
+    @staticmethod
     def write_text(self, list_data: list) -> None:
-        pass
+        if len(list_data) == 0:
+            return
+        # write data into file (name "dataKJHM.json") dictionary_list
+        bool_flag = u_file.write_json_file(list_data)
+        if bool_flag:
+            print("save success!")
+        else:  # non file write after create
+            self.write_text(list_data)
+        return
 
