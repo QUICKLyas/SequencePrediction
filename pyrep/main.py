@@ -5,8 +5,7 @@ import json
 import time
 req_url = cfg.general
 # (0~33)
-index = 0
-while index < 34:
+index =while index < 34:
     url = req_url.get('Request URL') + str(req_url.get('pageNum')+index) + req_url.get('pageSize')+req_url.get('end')
     response = requests.get(url, headers=cfg.request_header)
     soup = BeautifulSoup(response.text, features='html.parser')
