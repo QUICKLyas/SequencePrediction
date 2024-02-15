@@ -32,3 +32,4 @@ general = {
 }
 # total pages (0~33)
 pages = 33
+# file name for data
