@@ -1,4 +1,4 @@
-from webrep import WebRep
+from pyrep.reptile.webrep import WebRep
 
 # 但程序写入内容
 page = 1

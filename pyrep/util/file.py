@@ -1,10 +1,7 @@
 import os
 from pyrep.config import file_config as f_cfg
-from sys import path
 from json import dump, load
-
-json_file_save = f_cfg.json_file_path +f_cfg.json_file_name
-# path.append("/pyrep/util/file_config.py")
+json_file_save = f_cfg.json_file_path + f_cfg.json_file_name
 
 
 def write_json_file(data: list):

@@ -1,7 +1,7 @@
-
+import pymongo
 
 # use mongodb
-class DBSave:
+class DBOperation:
     def __init__(self):
         pass
 
