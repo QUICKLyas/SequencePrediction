@@ -1,24 +1,48 @@
+import random
+import threading
+
 import requests
 from bs4 import BeautifulSoup
 # code exec
 from pyrep import config as cfg
 import json
 import time
-req_url = cfg.general
-# (0~33)
-index = 0
+import random
+import os
+from threading import Thread, Lock
 
-url = req_url.get('Request URL') + str(req_url.get('pageNum')+index) + req_url.get('pageSize')+req_url.get('end')
-response = requests.get(url, headers=cfg.request_header)
-# soup = BeautifulSoup(response.text, features='html.parser')
-index = index + 1
-# 获取response报文中的内容
-string_res = response.text
-# 切分字符串，获取字典类型模式的字符串
-string_json = string_res[string_res.index('(')+1:len(string_res)-1]
-print(string_json)
-dict_data = json.loads(string_json)
-list_data = dict_data['data']
+
+def work(lock, n):
+    lock.acquire()
+    print('{}: {} is running'.format(n, os.getpid()))
+    time.sleep(n)
+    print('{}: {} is sleep for {}'.format(n, os.getpid(), n))
+    print('{}: {} is done'.format(n, os.getpid()))
+    lock.release()
+
+
+if __name__ == '__main__':
+    lock = Lock()
+    s = threading.Semaphore(3)
+    for i in range(6):
+        thread = Thread(target=work, args=(s, i))
+        thread.start()
+        # print("now Semaphore {}".format(s.))
+# req_url = cfg.general
+# # (0~33)
+# index = 0
+#
+# url = req_url.get('Request URL') + str(req_url.get('pageNum')+index) + req_url.get('pageSize')+req_url.get('end')
+# response = requests.get(url, headers=cfg.request_header)
+# # soup = BeautifulSoup(response.text, features='html.parser')
+# index = index + 1
+# # 获取response报文中的内容
+# string_res = response.text
+# # 切分字符串，获取字典类型模式的字符串
+# string_json = string_res[string_res.index('(')+1:len(string_res)-1]
+# print(string_json)
+# dict_data = json.loads(string_json)
+# list_data = dict_data['data']
 
 # for data in list_data:
 #     front_winning_num = data['frontWinningNum']
