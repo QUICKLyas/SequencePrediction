@@ -15,7 +15,7 @@ class WebRep:
 
     def get_html_text(self, page: int = 0) -> list:
         index = self.url_pageN + page
-        if index < self.range:
+        if index <= self.range:
             uri = self.url_start + str(self.url_pageN + page) + self.url_end
             response = requests.get(uri, headers=self.header)
             string_res = response.text
@@ -64,7 +64,7 @@ class WebRep:
         return data
 
     @staticmethod
-    def write_text(self, list_data: list, file: str = "") -> bool:
+    def write_text(self, list_data: list, file: str = "") -> dict:
         # write data into file (name "dataKJHM.json") dictionary_list
         dict_return: dict = {}
         if file == "":
@@ -72,5 +72,5 @@ class WebRep:
         else:
             dict_return = u_file.write_json_file(list_data, file)
         if not dict_return.get('flag'):
-            dict_return['flag'] = self.write_text(list_data=list_data)
-        return dict_return.get('flag')
+            dict_return = self.write_text(self, list_data=list_data)
+        return dict_return

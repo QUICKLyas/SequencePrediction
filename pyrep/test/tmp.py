@@ -1,5 +1,6 @@
 import random
 import threading
+from multiprocessing import Value
 
 import requests
 from bs4 import BeautifulSoup
@@ -11,22 +12,26 @@ import random
 import os
 from threading import Thread, Lock
 
+num = Value('i',0)
 
-def work(lock, n):
-    lock.acquire()
-    print('{}: {} is running'.format(n, os.getpid()))
-    time.sleep(n)
-    print('{}: {} is sleep for {}'.format(n, os.getpid(), n))
-    print('{}: {} is done'.format(n, os.getpid()))
-    lock.release()
+print(num)
 
 
-if __name__ == '__main__':
-    lock = Lock()
-    s = threading.Semaphore(3)
-    for i in range(6):
-        thread = Thread(target=work, args=(s, i))
-        thread.start()
+# def work(lock, n):
+#     lock.acquire()
+#     print('{}: {} is running'.format(n, os.getpid()))
+#     time.sleep(n)
+#     print('{}: {} is sleep for {}'.format(n, os.getpid(), n))
+#     print('{}: {} is done'.format(n, os.getpid()))
+#     lock.release()
+#
+#
+# if __name__ == '__main__':
+#     lock = Lock()
+#     s = threading.Semaphore(3)
+#     for i in range(6):
+#         thread = Thread(target=work, args=(s, i))
+#         thread.start()
         # print("now Semaphore {}".format(s.))
 # req_url = cfg.general
 # # (0~33)

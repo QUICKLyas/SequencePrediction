@@ -1,5 +1,5 @@
-def create_dict_note(flag: bool, message: str = "",data: list = None) -> dict:
-    dict_note = {}
+def create_dict_note(flag: bool, message: str = "", data: list = None) -> dict:
+    dict_note: dict = {}
     dict_note.setdefault("message", message)
     dict_note.setdefault("data", data)
     dict_note.setdefault("flag", flag)

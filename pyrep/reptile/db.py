@@ -18,7 +18,7 @@ class DB:
         dict_return = read_json_file()
         coll = self.database['issue']
         coll.insert_many(dict_return.get("data"))
-        dict_return = delete_json_file_data()  # 默认删除读取的文件内容
+        delete_json_file_data()  # 默认删除读取的文件内容
         return dict_return
 
     # 暂定不需要使用这个，一般用于test中清除数据

@@ -1,24 +1,20 @@
 import unittest
+from threading import Condition
+
 import pyrep.reptile.prothread as pt
+
+condition = Condition()
 
 
 class MyTestCase(unittest.TestCase):
-    def test_get_html_text(self):
-        thread1 = pt.WebRepThreadGetSpringText(1, "WebRepThreadGetSpringText", 0)
-        pt.start_thread(thread1)
-        pt.end_thread(thread1)
-        self.assertEqual(True,True)
 
-    def test_parse_text(self):
-        thread2 = pt.WebRepThreadParseText(2, "WebRepThreadParseText")
-        pt.start_thread(thread2)
-        pt.end_thread(thread2)
-        self.assertEqual(True, True)  # add assertion here
+    def test_web_thread(self):
+        thread1 = pt.WebRepThread(1,"WebRepThread",0, condition)
+        pt.start_thread(thread1)
 
     def test_db_thread(self):
-        thread3 = pt.DBThread(3, "DBThread")
+        thread3 = pt.DBThread(3, "DBThread",condition)
         pt.start_thread(thread3)
-        pt.end_thread(thread3)
         self.assertEqual(True, True)  # add assertion here
 
 

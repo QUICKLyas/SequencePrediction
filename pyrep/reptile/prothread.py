@@ -1,97 +1,102 @@
 import threading
+from concurrent.futures import thread
 from queue import Queue
 from threading import Thread, Condition
 from pyrep.reptile.webrep import WebRep
 from pyrep.reptile.db import DB
+from pyrep.config.config import pages,start_page,end_page
 from pyrep.util.file import read_json_file, delete_json_file_data
 import time
 
-# 设定锁
-threadLock = threading.Lock()
-#  线程池
-thread_list = []
-threads_waiting = []
-threads_ready = []
-# 缓存区记录，默认只有一个空间，就是每次生产完成之后就要等待消费
-thread_public_file: list = [0]
 condition = Condition()
-queue_run = Queue(1)
-# 等待唤醒的进程
 
-queue_wait = Queue(2)
-class WebRepThreadGetSpringText(Thread):
-    def __init__(self, thread_id: int, name, page=0):
+file_count:int = 1 # 文件可以存放一个list数据
+
+
+class WebRepThread(Thread):
+    def __init__(self, thread_id: int, name, page=0, con: Condition = None):
         Thread.__init__(self)  # 自定义为一个线程
-        self.exit_flag = True
         self.thread_id = thread_id
         self.name = name
         self.count = page
         self.web_rep = WebRep()
+        self.condition = con
 
     def run(self):
         # 读取文件从网站中
-        json_data = self.web_rep.get_html_text(page=self.count)
-
-        # while self.exit_flag:
-        #     if self.count < 1:
-        #         threadLock.acquire()
-        #         # 读取数据
-        #         json_data = self.web_rep.get_html_text(page=self.count)
-        #         # 写入数据
-        #         self.web_rep.write_text(self.web_rep, list_data=json_data)
-        #         # 输出信息
-        #         print_message(self.thread_id, self.name, self.count, str(type(json_data)))
-        #         self.count += 1
-        #         threadLock.release()
-        #     else:
-        #         self.exit_flag = False
-        # end_thread(self)
-
-
-class WebRepThreadParseText(Thread):
-    def __init__(self, thread_id: int, name: str):
-        Thread.__init__(self)
-        self.exit_flag = True
-        self.thread_id = thread_id
-        self.name = name
-        self.web_rep = WebRep()
-
-    def run(self) -> None:
-        while self.exit_flag:
-            threadLock.acquire()
-            text = read_json_file()
-            delete_json_file_data()
-            if len(text) != 0:
-                json_data = self.web_rep.parse_text(self.web_rep, list_data=text.get('data'))
-                self.web_rep.write_text(self.web_rep, list_data=json_data)
-                threadLock.release()
-            else:
-                self.exit_flag = False
+        self.condition.acquire()
+        global file_count
+        while True:
+            print_message(self.thread_id, self.name, "get Permission, page: {}".format(self.count))
+            json_data = self.web_rep.get_html_text(page=self.count)
+            list_data = self.web_rep.parse_text(self.web_rep, list_data=json_data)
+            # 保存数据到文件中
+            print_message(self.thread_id, self.name, "length: {}".format(len(list_data)))
+            dict_note = self.web_rep.write_text(self.web_rep, list_data=list_data)
+            file_count -= 1
+            self.count += 1
+            print_message(self.thread_id, self.name, dict_note.get('message') + " semaphore:{}, page:{}".format(file_count, self.count))
+            # 如果文件资源已经使用完毕，说明这个时候不能生产，需要消费
+            if file_count == 0:
+                self.condition.notify()
+                self.condition.wait()
+            if self.count >= pages:
+                break
+        self.condition.release()
+        end_thread(self)
 
 
 class DBThread(Thread):
-    def __init__(self, thread_id: int, name: str):
+    def __init__(self, thread_id: int, name: str, con: Condition = None):
         Thread.__init__(self)
-        self.exit_flag = True
         self.thread_id = thread_id
         self.name = name
         self.db = DB()
+        self.condition = con
 
     def run(self):
-        while self.exit_flag:
-            threadLock.acquire()
-            self.exit_flag = self.db.insert_list_data()
-            threadLock.release()
+        global file_count
+        self.condition.acquire()
+        while True:
+            print_message(self.thread_id, self.name, "get Permission for reading file")
+            dict_note = self.db.insert_list_data()
+            print_message(self.thread_id, self.name, "length: {}".format(len(dict_note.get('data'))))
+
+            file_count += 1
+            print_message(self.thread_id, self.name, dict_note.get('message') + " semaphore: {}".format(file_count))
+
+            # 说明此时文件操作权限为1，需要生产者
+            if file_count == 1:
+                self.condition.notify()
+                length = len(dict_note.get('data'))
+                if length != 30:
+                    break
+                self.condition.wait()
+        self.condition.release()
+        end_thread(self)
 
 
-def print_message(thread_id: int, name, counter, message: str) -> None:
+def print_message(thread_id: int, name, message: str) -> None:
     print("Thread:" + name + "-" + str(thread_id) + "@" + time.ctime(time.time()) + ":" + message)
 
 
-def start_thread(thread: Thread) -> None:
-    thread.start()  # 内部启动
-    print("Starting thread:", thread.name)
+def start_thread(th: Thread) -> None:
+    print("Starting thread: {}".format(th.name))
+    th.start()  # 内部启动
 
 
-def end_thread(thread: Thread) -> None:
-    print("Ending thread:", thread.name)
+def end_thread(th: Thread) -> None:
+    print("Ending thread: {}".format(th.name))
+
+
+
+def threads_start():
+    thread_web_reptile = WebRepThread(1, "WebRepThread", start_page, condition)
+    thread_db = DBThread(3, "DBThread", condition)
+
+    start_thread(thread_web_reptile)
+    start_thread(thread_db)
+
+    thread_web_reptile.join()
+    thread_db.join()
+

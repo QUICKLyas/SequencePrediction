@@ -33,3 +33,5 @@ general = {
 # total pages (0~33)
 pages = 34
 # file name for data
+start_page = 0
+end_page = 33

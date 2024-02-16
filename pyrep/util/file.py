@@ -36,12 +36,8 @@ def read_json_file(file_name=f_cfg.json_file_name) -> dict:
     else:
         with open(file, 'r') as f:
             # read data from json file
-            try:
-                json_data = load(f)
-            except TypeError:  # if read value's type is not list
-                dict_return = c_note(False, "Error reading json, value is not a list")
-            finally:
-                dict_return = c_note(True, "target:" + file + ". read success!", json_data)
+            json_data = load(f)
+            dict_return = c_note(True, "target:" + file + ". read success!", json_data)
     return dict_return
 
 
