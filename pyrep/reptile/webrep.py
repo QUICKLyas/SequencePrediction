@@ -13,7 +13,7 @@ class WebRep:
         self.header = cfg.request_header
         self.range = cfg.pages
 
-    def get_html_text(self, page=0) -> list:
+    def get_html_text(self, page: int = 0) -> list:
         index = self.url_pageN + page
         if index < self.range:
             uri = self.url_start + str(self.url_pageN + page) + self.url_end
@@ -64,11 +64,16 @@ class WebRep:
         return data
 
     @staticmethod
-    def write_text(self, list_data: list) -> None:
+    def write_text(self, list_data: list, file: str = "") -> bool:
         if len(list_data) == 0:
-            return
+            return False
         # write data into file (name "dataKJHM.json") dictionary_list
-        bool_flag = u_file.write_json_file(list_data)
+        bool_flag: bool
+        if file == "":
+            bool_flag = u_file.write_json_file(list_data)
+        else:
+            bool_flag = u_file.write_json_file(list_data, file)
         if not bool_flag:
             self.write_text(list_data=list_data)
-        return
+        return True
+

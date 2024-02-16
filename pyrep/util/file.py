@@ -1,10 +1,10 @@
 import os
 from pyrep.config import file_config as f_cfg
 from json import dump, load
-json_file_save = f_cfg.json_file_path + f_cfg.json_file_name
 
 
-def write_json_file(data: list, file=json_file_save):
+def write_json_file(data: list, file_name=f_cfg.json_file_name):
+    file = f_cfg.json_file_path + file_name
     if len(data) == 0:
         return
     # if file is not exist， create file
@@ -20,7 +20,8 @@ def write_json_file(data: list, file=json_file_save):
     return True
 
 
-def read_json_file(file=json_file_save) -> list:
+def read_json_file(file_name=f_cfg.json_file_name) -> list:
+    file = f_cfg.json_file_path + file_name
     json_data: list
     # if file is not exist， create file
     if not (os.path.exists(file)):
@@ -39,11 +40,8 @@ def read_json_file(file=json_file_save) -> list:
     return json_data
 
 
-def delete_json_file(file=json_file_save) -> bool:
-    if not (os.path.exists(file)):
-        f = open(file, 'w')
-        f.close()
-        print("file is not exist")
-    else:
+def delete_json_file(file_name=f_cfg.json_file_name) -> bool:
+    file = f_cfg.json_file_path + file_name
+    if os.path.exists(file):
         os.remove(file)
     return True
