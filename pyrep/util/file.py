@@ -45,3 +45,15 @@ def delete_json_file(file_name=f_cfg.json_file_name) -> bool:
     if os.path.exists(file):
         os.remove(file)
     return True
+
+
+def delete_json_file_data(file_name=f_cfg.json_file_name) -> bool:
+    file = f_cfg.json_file_path + file_name
+    if os.path.exists(file):
+        with open(file, 'a+') as f:
+            f.truncate(0)
+    else:
+        f = open(file, 'w')
+        f.close()
+        print("file is not exist")
+    return True

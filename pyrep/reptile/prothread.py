@@ -3,7 +3,7 @@ from pyrep.config.config import pages
 from threading import Thread
 from pyrep.reptile.webrep import WebRep
 from pyrep.reptile.db import DB
-from pyrep.util.file import read_json_file, delete_json_file
+from pyrep.util.file import read_json_file, delete_json_file_data
 import time
 
 # 设定锁
@@ -24,10 +24,9 @@ class WebRepThreadGetSpringText(Thread):
         self.web_rep = WebRep()
 
 
-
     def run(self):
         while self.exit_flag:
-            if self.count < pages:
+            if self.count < 1:
                 threadLock.acquire()
                 # 读取数据
                 json_data = self.web_rep.get_html_text(page=self.count)
@@ -54,11 +53,9 @@ class WebRepThreadParseText(Thread):
         while self.exit_flag:
             threadLock.acquire()
             text = read_json_file()
-            delete_json_file()
-            threadLock.release()
+            delete_json_file_data()
             if len(text) != 0:
                 json_data = self.web_rep.parse_text(self.web_rep, list_data=text)
-                threadLock.acquire()
                 self.web_rep.write_text(self.web_rep,list_data=json_data)
                 threadLock.release()
             else:
@@ -75,13 +72,9 @@ class DBThread(Thread):
 
     def run(self):
         while self.exit_flag:
-            # threadLock.acquire()
-            # json_data = read_json_file()
-            # delete_json_file()
-            # threadLock.release()
-            # if len(json_data) != 0:
-            #     threadLock.acquire()
-            #     self.db.insert_json(self.db, json_data)
+            threadLock.acquire()
+            self.exit_flag = self.db.insert_list_data()
+            threadLock.release()
 
 
 def print_message(thread_id: int, name, counter,message:str) -> None:
@@ -93,25 +86,3 @@ def start_thread(thread: Thread) -> None:
 
 def end_thread(thread: Thread) -> None:
     print("Ending thread:", thread.name)
-def step_1(page=0) -> list:
-    answer = web_rep.get_html_text(page=page)
-    return answer
-
-
-# 如果结果为False，说明已经没有新的数据得到，True 需要进入下一步
-def step_2(list_data: list) -> bool:
-    answer = web_rep.write_text(
-        web_rep, web_rep.parse_text(
-            web_rep, list_data=list_data))
-    return answer
-
-
-def step_3():
-    db.insert_list_data()
-    # Thread(target=WebRep.get_html_text, args=(web_rep, page))
-    # th_webrep_get = Thread(target=WebRep.get_html_text, {})
-
-
-th_1 = Thread(target=step_1)
-th_2 = Thread(target=step_2)
-th_3 = Thread(target=step_3)
