@@ -8,5 +8,6 @@ protected/data/*.db
 themes/classic/views/
 pyrep/build
 
+cppcompro/.idea/
 cppcompro/cmake-build-debug
 cppcompro/CMakeList.txt
