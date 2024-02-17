@@ -1,5 +1,5 @@
 .idea/
-
+cppcompro/.idea
 assets/*
 !assets/.gitignore
 protected/runtime/*
@@ -7,7 +7,3 @@ protected/runtime/*
 protected/data/*.db
 themes/classic/views/
 pyrep/build
-
-cppcompro/CMakeLists.txt
-cppcompro/.idea
-cppcompro/cmake-build-debug
