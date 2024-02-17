@@ -66,6 +66,7 @@ class WebRep:
     @staticmethod
     def write_text(self, list_data: list, file: str = "") -> dict:
         # write data into file (name "dataKJHM.json") dictionary_list
+        u_file.delete_json_file_data()
         dict_return: dict = {}
         if file == "":
             dict_return = u_file.write_json_file(list_data)
