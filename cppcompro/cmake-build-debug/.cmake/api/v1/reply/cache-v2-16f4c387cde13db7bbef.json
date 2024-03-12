@@ -1270,6 +1270,18 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "MONGO_CXX_DRIVER_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for MONGO_CXX_DRIVER."
+				}
+			],
+			"type" : "PATH",
+			"value" : "MONGO_CXX_DRIVER_DIR-NOTFOUND"
+		},
+		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
 			"properties" : 
 			[
@@ -1316,6 +1328,66 @@
 			],
 			"type" : "STATIC",
 			"value" : "F:/IDE/_CodeSpace/SequencePrediction/cppcompro"
+		},
+		{
+			"name" : "libmongocxx_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for libmongocxx."
+				}
+			],
+			"type" : "PATH",
+			"value" : "libmongocxx_DIR-NOTFOUND"
+		},
+		{
+			"name" : "mongo-cxx-driver_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for mongo-cxx-driver."
+				}
+			],
+			"type" : "PATH",
+			"value" : "mongo-cxx-driver_DIR-NOTFOUND"
+		},
+		{
+			"name" : "mongo-cxx_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for mongo-cxx."
+				}
+			],
+			"type" : "PATH",
+			"value" : "mongo-cxx_DIR-NOTFOUND"
+		},
+		{
+			"name" : "mongo_cxx_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for mongo_cxx."
+				}
+			],
+			"type" : "PATH",
+			"value" : "mongo_cxx_DIR-NOTFOUND"
+		},
+		{
+			"name" : "mongocxx_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for mongocxx."
+				}
+			],
+			"type" : "PATH",
+			"value" : "mongocxx_DIR-NOTFOUND"
 		}
 	],
 	"kind" : "cache",
