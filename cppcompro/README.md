@@ -48,7 +48,7 @@
       -- Generating done (2.2s)
       -- Build files have been written to: F:/tool/CXXPlugins/mongo-cxx-driver-r3.10.0/cmake
    ```
-2. 编译安装
+2. 编译安装[README.md](README.md)
 ```
    msbuild.exe ALL_BUILD.vcxproj
    msbuild.exe INSTALL.vcxproj
@@ -57,3 +57,8 @@
 
 ## 关于CMAKE 引入外部文件
 本项目大部分使用绝对引入，同时记录了部分其他引入的方法，详细可以从CMakeLists.txt中看到
+
+## 关于连接MONGO
+由于某种原因，不能将使用mongo-cxx-driver，转而使用mongo-c-driver连接数据库
+
+
