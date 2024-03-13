@@ -2,6 +2,30 @@
 	"entries" : 
 	[
 		{
+			"name" : "BSONCXX_INCLUDE_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "BSONCXX_INCLUDE_DIRS-NOTFOUND"
+		},
+		{
+			"name" : "BSONCXX_LIBIRARY",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "BSONCXX_LIBIRARY-NOTFOUND"
+		},
+		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[
@@ -1294,6 +1318,18 @@
 			"value" : "TRUE"
 		},
 		{
+			"name" : "bsoncxx_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for bsoncxx."
+				}
+			],
+			"type" : "PATH",
+			"value" : "bsoncxx_DIR-NOTFOUND"
+		},
+		{
 			"name" : "cppcompro_BINARY_DIR",
 			"properties" : 
 			[
@@ -1376,6 +1412,30 @@
 			],
 			"type" : "PATH",
 			"value" : "mongo_cxx_DIR-NOTFOUND"
+		},
+		{
+			"name" : "mongocxx-config.cmake_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for mongocxx-config.cmake."
+				}
+			],
+			"type" : "PATH",
+			"value" : "mongocxx-config.cmake_DIR-NOTFOUND"
+		},
+		{
+			"name" : "mongocxx-config_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for mongocxx-config."
+				}
+			],
+			"type" : "PATH",
+			"value" : "mongocxx-config_DIR-NOTFOUND"
 		},
 		{
 			"name" : "mongocxx_DIR",

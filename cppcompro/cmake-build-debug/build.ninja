@@ -52,6 +52,7 @@ build cmake_object_order_depends_target_cppcompro: phony || CMakeFiles/cppcompro
 build CMakeFiles/cppcompro.dir/main.cpp.obj: CXX_COMPILER__cppcompro_unscanned_Debug F$:/IDE/_CodeSpace/SequencePrediction/cppcompro/main.cpp || cmake_object_order_depends_target_cppcompro
   DEP_FILE = CMakeFiles\cppcompro.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IF:/tool/CXXPlugins/mongo-cxx-driver/include/mongocxx/v_noabi -IF:/tool/CXXPlugins/mongo-cxx-driver/include/bsoncxx/v_noabi
   OBJECT_DIR = CMakeFiles\cppcompro.dir
   OBJECT_FILE_DIR = CMakeFiles\cppcompro.dir
 
@@ -63,9 +64,10 @@ build CMakeFiles/cppcompro.dir/main.cpp.obj: CXX_COMPILER__cppcompro_unscanned_D
 #############################################
 # Link the executable cppcompro.exe
 
-build cppcompro.exe: CXX_EXECUTABLE_LINKER__cppcompro_Debug CMakeFiles/cppcompro.dir/main.cpp.obj
+build cppcompro.exe: CXX_EXECUTABLE_LINKER__cppcompro_Debug CMakeFiles/cppcompro.dir/main.cpp.obj | F$:/tool/CXXPlugins/mongo-cxx-driver/lib/bsoncxx-v_noabi-dhs-x64-v143-mdd.lib F$:/tool/CXXPlugins/mongo-cxx-driver/lib/mongocxx-v_noabi-dhs-x64-v143-mdd.lib
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = F:/tool/CXXPlugins/mongo-cxx-driver/lib/bsoncxx-v_noabi-dhs-x64-v143-mdd.lib  F:/tool/CXXPlugins/mongo-cxx-driver/lib/mongocxx-v_noabi-dhs-x64-v143-mdd.lib  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_PATH = -LF:/tool/CXXPlugins/mongo-cxx-driver/lib
   OBJECT_DIR = CMakeFiles\cppcompro.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

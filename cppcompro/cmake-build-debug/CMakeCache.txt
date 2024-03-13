@@ -14,6 +14,12 @@
 # EXTERNAL cache entries
 ########################
 
+//Path to a file.
+BSONCXX_INCLUDE_DIRS:PATH=BSONCXX_INCLUDE_DIRS-NOTFOUND
+
+//Path to a library.
+BSONCXX_LIBIRARY:FILEPATH=BSONCXX_LIBIRARY-NOTFOUND
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=F:/tool/environment/mingw64/bin/addr2line.exe
 
@@ -245,6 +251,9 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 //The directory containing a CMake configuration file for MONGO_CXX_DRIVER.
 MONGO_CXX_DRIVER_DIR:PATH=MONGO_CXX_DRIVER_DIR-NOTFOUND
 
+//The directory containing a CMake configuration file for bsoncxx.
+bsoncxx_DIR:PATH=bsoncxx_DIR-NOTFOUND
+
 //Value Computed by CMake
 cppcompro_BINARY_DIR:STATIC=F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug
 
@@ -265,6 +274,12 @@ mongo-cxx_DIR:PATH=mongo-cxx_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for mongo_cxx.
 mongo_cxx_DIR:PATH=mongo_cxx_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for mongocxx-config.cmake.
+mongocxx-config.cmake_DIR:PATH=mongocxx-config.cmake_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for mongocxx-config.
+mongocxx-config_DIR:PATH=mongocxx-config_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for mongocxx.
 mongocxx_DIR:PATH=mongocxx_DIR-NOTFOUND

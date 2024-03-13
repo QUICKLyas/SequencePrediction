@@ -54,3 +54,6 @@
    msbuild.exe INSTALL.vcxproj
    msbuild.exe generate_uninstall\uninstall.vcxproj \\ 卸载指令
 ```
+
+## 关于CMAKE 引入外部文件
+本项目大部分使用绝对引入，同时记录了部分其他引入的方法，详细可以从CMakeLists.txt中看到
