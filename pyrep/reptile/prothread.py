@@ -46,7 +46,8 @@ class WebRepThread(Thread):
         end_thread(self)
 
 
-class DBThread(Thread):
+class DBStartThread(Thread):
+
     def __init__(self, thread_id: int, name: str, con: Condition = None):
         Thread.__init__(self)
         self.thread_id = thread_id
@@ -60,11 +61,38 @@ class DBThread(Thread):
         while True:
             print_message(self.thread_id, self.name, "get Permission for reading file")
             dict_note = self.db.insert_list_data()
-            print_message(self.thread_id, self.name, "length: {}".format(len(dict_note.get('data'))))
+            self.control_in_run(dict_note=dict_note)
 
-            file_count += 1
-            print_message(self.thread_id, self.name, dict_note.get('message') + " semaphore: {}".format(file_count))
+            # 说明此时文件操作权限为1，需要生产者
+            if file_count == 1:
+                self.condition.notify()
+                length = len(dict_note.get('data'))
+                if length != 30:
+                    break
+                self.condition.wait()
+        self.condition.release()
+        end_thread(self)
 
+    def control_in_run(self, dict_note: dict):
+        global file_count
+        print_message(self.thread_id, self.name, "length: {}".format(len(dict_note.get('data'))))
+
+        file_count += 1
+        print_message(self.thread_id, self.name, dict_note.get('message') + " semaphore: {}".format(file_count))
+
+
+class DBUpdateThread(DBStartThread):
+    # 默认使用父类中的构造函数
+    # def __init__(self, thread_id: int, name: str, con: Condition = None):
+    #     super(DBUpdateThread, self).__init__(thread_id, name, con)  # 不要忘记从Animal类引入属性
+
+    def run(self):
+        global file_count
+        self.condition.acquire()
+        while True:
+            print_message(self.thread_id, self.name, "get Permission for reading file")
+            dict_note = self.db.update_new_list_data()
+            self.control_in_run(dict_note=dict_note)
             # 说明此时文件操作权限为1，需要生产者
             if file_count == 1:
                 self.condition.notify()
@@ -89,10 +117,9 @@ def end_thread(th: Thread) -> None:
     print("Ending thread: {}".format(th.name))
 
 
-
 def threads_start():
     thread_web_reptile = WebRepThread(1, "WebRepThread", start_page, condition)
-    thread_db = DBThread(3, "DBThread", condition)
+    thread_db = DBStartThread(3, "DBThread", condition)
 
     start_thread(thread_web_reptile)
     start_thread(thread_db)
@@ -100,3 +127,14 @@ def threads_start():
     thread_web_reptile.join()
     thread_db.join()
 
+
+# 在运行依次start之后才运行该内容
+def thread_update():
+    thread_web_reptile = WebRepThread(1,"WebRepThread", start_page, condition)
+    thread_db = DBUpdateThread(2, "DBThread", condition)
+
+    start_thread(thread_web_reptile)
+    start_thread(thread_db)
+
+    thread_web_reptile.join()
+    thread_db.join()
