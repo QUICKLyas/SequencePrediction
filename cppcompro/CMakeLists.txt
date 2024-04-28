@@ -4,33 +4,45 @@ project(cppcompro)
 set(CMAKE_CXX_STANDARD 17)
 # 在此处添加相关文件
 set(SOURCE_FILES
-    src/main.cpp
+        src/main.cpp
         src/util/mongoc-cxx.hpp
 )
-# 配置的外部库文件 本地目录，方便使用
-set(MONGOCXX_DRIVER_PATH F:/tool/CXXPlugins/mongo-cxx-driver/include)
-set(MONGOC_DRIVER_PATH F:/tool/CXXPlugins/mongo-c-driver/include)
-set(MONGOC_LIBRARIES F:/tool/CXXPlugins/mongo-c-driver/lib)
-set(MONGOCXX_LIBRARIES F:/tool/CXXPlugins/mongo-cxx-driver/lib)
-# 输出目录
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(INCS_DIR "F:/tool/CXXPlugins/additional/includes")
+set(LIBS_DIR "F:/tool/CXXPlugins/additional/libs")
 
-include_directories("${MONGOC_DRIVER_PATH}/libbson-1.0")
-include_directories("${MONGOC_DRIVER_PATH}/libmongoc-1.0")
-include_directories("${MONGOCXX_DRIVER_PATH}/bsoncxx/v_noabi")
-include_directories("${MONGOCXX_DRIVER_PATH}/mongocxx/v_noabi")
+include_directories(${INCS_DIR})
+link_directories(${LIBS_DIR})
+link_libraries(additional)
 
-link_directories(${MONGOC_LIBRARIES})
-link_directories(${MONGOCXX_LIBRARIES})
+add_executable(plugins ${SOURCE_FILES})
+target_link_libraries(plugins additional)
+#target_link_libraries(plugins plugins)
 
-add_executable(cppcompro ${SOURCE_FILES})
-
-target_link_libraries(${PROJECT_NAME}
-        bson-1.0.dll
-        bsoncxx-v_noabi-dhs-x64-v143-mdd.dll
-        mongoc-1.0.dll
-        mongocxx-v_noabi-dhs-x64-v143-mdd.dll
-)
+#find_package(mongocxx REQUIRED)
+## 配置的外部库文件 本地目录，方便使用
+#set(MONGOCXX_DRIVER_PATH F:/tool/CXXPlugins/mongo-cxx-driver/include)
+#set(MONGOC_DRIVER_PATH F:/tool/CXXPlugins/mongo-c-driver/include)
+#set(MONGOC_LIBRARIES F:/tool/CXXPlugins/mongo-c-driver/lib)
+#set(MONGOCXX_LIBRARIES F:/tool/CXXPlugins/mongo-cxx-driver/lib)
+## 输出目录
+#set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+#
+#include_directories("${MONGOC_DRIVER_PATH}/libbson-1.0")
+#include_directories("${MONGOC_DRIVER_PATH}/libmongoc-1.0")
+#include_directories("${MONGOCXX_DRIVER_PATH}/bsoncxx/v_noabi")
+#include_directories("${MONGOCXX_DRIVER_PATH}/mongocxx/v_noabi")
+#
+#link_directories(${MONGOC_LIBRARIES})
+#link_directories(${MONGOCXX_LIBRARIES})
+#
+#add_executable(cppcompro ${SOURCE_FILES})
+#
+#target_link_libraries(${PROJECT_NAME}
+#        bson-1.0.dll
+#        bsoncxx-v_noabi-dhs-x64-v143-mdd.dll
+#        mongoc-1.0.dll
+#        mongocxx-v_noabi-dhs-x64-v143-mdd.dll
+#)
 # old code about importing lib
 ##find_package(libmongocxx REQUIRED)
 ##find_package(libbsoncxx REQUIRED)
