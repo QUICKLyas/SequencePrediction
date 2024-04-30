@@ -2,6 +2,7 @@
 cppcompro/.idea
 cppcompro/cmake-build-debug-mingw
 cppcompro/cmake-build-debug-vs
+cppcompro/src/config/user.h
 assets/*
 !assets/.gitignore
 protected/runtime/*

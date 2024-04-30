@@ -5,13 +5,18 @@ set(CMAKE_CXX_STANDARD 17)
 # 在此处添加相关文件
 set(SOURCE_FILES
         src/main.cpp
-        src/util/mongoc-cxx.hpp
+)
+include_directories(
+        "src/util"
+        "src/conf"
 )
 set(INCS_DIR "F:/tool/CXXPlugins/additional/includes")
 set(LIBS_DIR "F:/tool/CXXPlugins/additional/libs")
+set(BOOST_DIR "F:/tool/CXXPlugins/boost-v1.85.0")
+set(BOOST_LIB_DIR "F:/tool/CXXPlugins/boost-v1.85.0/libs")
 
-include_directories(${INCS_DIR})
-link_directories(${LIBS_DIR})
+include_directories(${INCS_DIR} ${BOOST_DIR})
+link_directories(${LIBS_DIR} ${BOOST_LIB_DIR})
 link_libraries(additional)
 
 add_executable(plugins ${SOURCE_FILES})

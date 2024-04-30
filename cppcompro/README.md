@@ -60,7 +60,9 @@
 
 ## 关于连接MONGO
 由于某种原因，不能将使用mongo-cxx-driver，转而使用mongo-c-driver连接数据库
-2024.03.14: 重新研究发现，我们可以将mongo的库文件(.dll)复制到输出目录bin下，这样编译结果是可以运行的
+请详细阅读理解 https://www.mongodb.com/docs/languages/cpp/cpp-driver/current/configuration/ 网站上的配置说明，
+再结合文件mon_con.hpp ，理解连接的过程
+文件：conf/user.h (操作权限最高) 存储用户信息 对应有 conf/other.h (操作权限最低)
 
 ## ABOUT ALGORITHM
 已知目标输出是一组数字 前位 1-5 (1-35) 后位 6-7 (1-12) 我们成为这样的一组数据为数据链，在程序中可能生成多个这样的数据链组

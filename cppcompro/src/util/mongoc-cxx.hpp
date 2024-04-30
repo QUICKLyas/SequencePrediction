@@ -4,17 +4,32 @@
 
 #ifndef WEBREP_PY_MONGOC_CXX_H
 #define WEBREP_PY_MONGOC_CXX_H
-#include <bson.h>
-#include <mongoc.h>
+#include <bson/bson.h>
+#include <mongoc/mongoc.h>
 #include <string>
 #include <iostream>
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>
 
-using namespace std;
+#include "conf/user.hpp"
+
 // abstract function
 class MongoC; // abstract class
-class Datagram; // send data
+class MongoCXX;
+// create connector with mongo-cxx
+class MongoCXX{
+    // use tls or uri
+private:
+    mongocxx::instance inst{};
+    const mongocxx::uri uri;
+public:
+    int cleanUp();
+    int setClient();
+    int connectDB(const char *dbName);
+    MongoCXX(string userName, string passwd) {
+
+    }
+}
 // function
 class MongoC {
 private:
@@ -65,7 +80,7 @@ int MongoC::setClient () {
         rc = 1;
         cleanUp();
     }
-    // config server_api to client
+    // conf server_api to client
     ok = mongoc_client_set_server_api(client, api, &error);
     if (!ok) {
         fprintf(stderr, "error: %s\n", error.message);
@@ -126,17 +141,6 @@ void Datagram::printStr(){
               << "}" << std::endl;
 }
 
-class MongoCXX{
-private:
-    mongocxx::instance inst{};
-    const mongocxx::uri uri;
-public:
-    int cleanUp();
-    int setClient();
-    int connectDB(const char *dbName);
-    MongoCXX(string userName, string passwd) {
-
-    }
 };
 //// create an instance
 //mongocxx::instance inst{};
