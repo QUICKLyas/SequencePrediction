@@ -10,17 +10,28 @@ include_directories(
         "src/util"
         "src/conf"
 )
-set(INCS_DIR "F:/tool/CXXPlugins/additional/includes")
-set(LIBS_DIR "F:/tool/CXXPlugins/additional/libs")
-set(BOOST_DIR "F:/tool/CXXPlugins/boost-v1.85.0")
-set(BOOST_LIB_DIR "F:/tool/CXXPlugins/boost-v1.85.0/libs")
 
-include_directories(${INCS_DIR} ${BOOST_DIR})
-link_directories(${LIBS_DIR} ${BOOST_LIB_DIR})
-link_libraries(additional)
 
-add_executable(plugins ${SOURCE_FILES})
-target_link_libraries(plugins additional)
+set(INCS_DIR F:/tool/CXXPlugins/additional/includes)
+set(LIBS_DIR F:/tool/CXXPlugins/additional/libs)
+set(BOOST_DIR F:/tool/CXXPlugins/boost/b2-install/boost-vc143/include)
+set(BOOST_LIB_DIR F:/tool/CXXPlugins/boost/b2-install/boost-vc143/lib)
+
+find_package(Threads)
+
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+# 链接外部库
+include_directories(${INCS_DIR})
+link_directories(${LIBS_DIR})
+include_directories(${BOOST_DIR})
+link_directories(${BOOST_LIB_DIR})
+#include_directories(include)
+# important sentence , get lib file
+#link_libraries(mongoc.lib mongocxx.lib bson.lib bsoncxx.lib)
+#设置编译文件
+add_executable(demo ${SOURCE_FILES})
+target_link_libraries(demo mongocxx.dll bsoncxx.dll)
+#target_link_libraries()
 #target_link_libraries(plugins plugins)
 
 #find_package(mongocxx REQUIRED)
@@ -44,9 +55,9 @@ target_link_libraries(plugins additional)
 #
 #target_link_libraries(${PROJECT_NAME}
 #        bson-1.0.dll
-#        bsoncxx-v_noabi-dhs-x64-v143-mdd.dll
+#        bsoncxx.dll
 #        mongoc-1.0.dll
-#        mongocxx-v_noabi-dhs-x64-v143-mdd.dll
+#        mongocxx.dll
 #)
 # old code about importing lib
 ##find_package(libmongocxx REQUIRED)

@@ -1,0 +1,254 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake:211 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.26100 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: F:/IDE/MicroVS/2022/Community/VC/Tools/MSVC/14.39.33519/bin/Hostx64/x64/cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.39.33523 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.39.33523.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/3.27.8/CompilerIdC/CMakeCCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:1155 (message)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:221 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  F:\\IDE\\_CodeSpace\\SequencePrediction\\cppcompro\\cmake-build-debug-visual-studio\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "message-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: F:/IDE/MicroVS/2022/Community/VC/Tools/MSVC/14.39.33519/bin/Hostx64/x64/cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.39.33523 版
+      版权所有(C) Microsoft Corporation。保留所有权利。
+      
+      CMakeCXXCompilerId.cpp
+      Microsoft (R) Incremental Linker Version 14.39.33523.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCXXCompilerId.exe 
+      CMakeCXXCompilerId.obj 
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+      
+      The CXX compiler identification is MSVC, found in:
+        F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/3.27.8/CompilerIdCXX/CMakeCXXCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:1155 (message)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:221 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting CXX compiler /showIncludes prefix:
+        main.c
+        注意: 包含文件:  F:\\IDE\\_CodeSpace\\SequencePrediction\\cppcompro\\cmake-build-debug-visual-studio\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "注意: 包含文件:  "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-ohrng2"
+      binary: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-ohrng2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-ohrng2'
+        
+        Run Build Command(s): "F:/IDE/CLion 2023.3.3/bin/ninja/win/x64/ninja.exe" -v cmTC_4b8be
+        [1/2] F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_4b8be.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_4b8be.dir\\ /FS -c "F:\\IDE\\CLion 2023.3.3\\bin\\cmake\\win\\x64\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
+        [2/2] cmd.exe /C "cd . && "F:\\IDE\\CLion 2023.3.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_4b8be.dir --rc="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\rc.exe" --mt="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\mt.exe" --manifests  -- F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_4b8be.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_4b8be.exe /implib:cmTC_4b8be.lib /pdb:cmTC_4b8be.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-gs74qh"
+      binary: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-gs74qh"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-gs74qh'
+        
+        Run Build Command(s): "F:/IDE/CLion 2023.3.3/bin/ninja/win/x64/ninja.exe" -v cmTC_e8a8e
+        [1/2] F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP   /DWIN32 /D_WINDOWS /W3 /GR /EHsc  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_e8a8e.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_e8a8e.dir\\ /FS -c "F:\\IDE\\CLion 2023.3.3\\bin\\cmake\\win\\x64\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] cmd.exe /C "cd . && "F:\\IDE\\CLion 2023.3.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_e8a8e.dir --rc="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\rc.exe" --mt="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\mt.exe" --manifests  -- F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_e8a8e.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_e8a8e.exe /implib:cmTC_e8a8e.lib /pdb:cmTC_e8a8e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "CMakeLists.txt:20 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-dt4lhs"
+      binary: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-dt4lhs"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-dt4lhs'
+        
+        Run Build Command(s): "F:/IDE/CLion 2023.3.3/bin/ninja/win/x64/ninja.exe" -v cmTC_98f60
+        [1/2] F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCMAKE_HAVE_LIBC_PTHREAD  /DWIN32 /D_WINDOWS /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_98f60.dir\\src.c.obj /FdCMakeFiles\\cmTC_98f60.dir\\ /FS -c F:\\IDE\\_CodeSpace\\SequencePrediction\\cppcompro\\cmake-build-debug-visual-studio\\CMakeFiles\\CMakeScratch\\TryCompile-dt4lhs\\src.c
+        FAILED: CMakeFiles/cmTC_98f60.dir/src.c.obj 
+        F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCMAKE_HAVE_LIBC_PTHREAD  /DWIN32 /D_WINDOWS /W3  /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_98f60.dir\\src.c.obj /FdCMakeFiles\\cmTC_98f60.dir\\ /FS -c F:\\IDE\\_CodeSpace\\SequencePrediction\\cppcompro\\cmake-build-debug-visual-studio\\CMakeFiles\\CMakeScratch\\TryCompile-dt4lhs\\src.c
+        F:\\IDE\\_CodeSpace\\SequencePrediction\\cppcompro\\cmake-build-debug-visual-studio\\CMakeFiles\\CMakeScratch\\TryCompile-dt4lhs\\src.c(1): fatal error C1083: 无法打开包括文件: “pthread.h”: No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "CMakeLists.txt:20 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-e35z9s"
+      binary: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-e35z9s"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-e35z9s'
+        
+        Run Build Command(s): "F:/IDE/CLion 2023.3.3/bin/ninja/win/x64/ninja.exe" -v cmTC_13222
+        [1/2] F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 -DCHECK_FUNCTION_EXISTS=pthread_create /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_13222.dir\\CheckFunctionExists.c.obj /FdCMakeFiles\\cmTC_13222.dir\\ /FS -c F:\\IDE\\_CodeSpace\\SequencePrediction\\cppcompro\\cmake-build-debug-visual-studio\\CMakeFiles\\CMakeScratch\\TryCompile-e35z9s\\CheckFunctionExists.c
+        [2/2] cmd.exe /C "cd . && "F:\\IDE\\CLion 2023.3.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_13222.dir --rc="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\rc.exe" --mt="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\mt.exe" --manifests  -- F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_13222.dir\\CheckFunctionExists.c.obj  /out:cmTC_13222.exe /implib:cmTC_13222.lib /pdb:cmTC_13222.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_13222.exe 
+        cmd.exe /C "cd . && "F:\\IDE\\CLion 2023.3.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_13222.dir --rc="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\rc.exe" --mt="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\mt.exe" --manifests  -- F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_13222.dir\\CheckFunctionExists.c.obj  /out:cmTC_13222.exe /implib:cmTC_13222.lib /pdb:cmTC_13222.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_13222.dir\\CheckFunctionExists.c.obj /out:cmTC_13222.exe /implib:cmTC_13222.lib /pdb:cmTC_13222.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_13222.dir/intermediate.manifest CMakeFiles\\cmTC_13222.dir/manifest.res" failed (exit code 1104) with the following output:
+        LINK : fatal error LNK1104: 无法打开文件“pthreads.lib”
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "F:/IDE/CLion 2023.3.3/bin/cmake/win/x64/share/cmake-3.27/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "CMakeLists.txt:20 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-scpfuh"
+      binary: "F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-scpfuh"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'F:/IDE/_CodeSpace/SequencePrediction/cppcompro/cmake-build-debug-visual-studio/CMakeFiles/CMakeScratch/TryCompile-scpfuh'
+        
+        Run Build Command(s): "F:/IDE/CLion 2023.3.3/bin/ninja/win/x64/ninja.exe" -v cmTC_115f1
+        [1/2] F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3 -DCHECK_FUNCTION_EXISTS=pthread_create /MDd /Zi /Ob0 /Od /RTC1 /showIncludes /FoCMakeFiles\\cmTC_115f1.dir\\CheckFunctionExists.c.obj /FdCMakeFiles\\cmTC_115f1.dir\\ /FS -c F:\\IDE\\_CodeSpace\\SequencePrediction\\cppcompro\\cmake-build-debug-visual-studio\\CMakeFiles\\CMakeScratch\\TryCompile-scpfuh\\CheckFunctionExists.c
+        [2/2] cmd.exe /C "cd . && "F:\\IDE\\CLion 2023.3.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_115f1.dir --rc="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\rc.exe" --mt="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\mt.exe" --manifests  -- F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_115f1.dir\\CheckFunctionExists.c.obj  /out:cmTC_115f1.exe /implib:cmTC_115f1.lib /pdb:cmTC_115f1.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_115f1.exe 
+        cmd.exe /C "cd . && "F:\\IDE\\CLion 2023.3.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_115f1.dir --rc="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\rc.exe" --mt="F:\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\mt.exe" --manifests  -- F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_115f1.dir\\CheckFunctionExists.c.obj  /out:cmTC_115f1.exe /implib:cmTC_115f1.lib /pdb:cmTC_115f1.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "F:\\IDE\\MicroVS\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_115f1.dir\\CheckFunctionExists.c.obj /out:cmTC_115f1.exe /implib:cmTC_115f1.lib /pdb:cmTC_115f1.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_115f1.dir/intermediate.manifest CMakeFiles\\cmTC_115f1.dir/manifest.res" failed (exit code 1104) with the following output:
+        LINK : fatal error LNK1104: 无法打开文件“pthread.lib”
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...
