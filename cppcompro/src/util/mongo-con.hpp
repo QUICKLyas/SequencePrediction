@@ -36,8 +36,8 @@ private:
     database db; // stowed database
     collection col; // stowed collection
 public:
-    auto connectDB(string);// get database connection by database name(string)
-    auto connectCol(string); // get collection connection by collection name (string)
+    database connectDB(string);// get database connection by database name(string)
+    collection connectCol(string); // get collection connection by collection name (string)
     MonCXX();
     ~MonCXX();
 };
@@ -46,13 +46,13 @@ MonCXX::MonCXX() {
     connect_uri = uri(URI);
     single_client = client(connect_uri);
 }
-auto MonCXX::connectDB(string db_name = CUR_DB) {
+database MonCXX::connectDB(string db_name = CUR_DB) {
     cout << "connect to database: " << CUR_DB << "...";
     this->db = single_client[db_name];
     cout << "success." << endl;
     return this->db;
 }
-auto MonCXX::connectCol(string coll_name = CUR_COLLECTION) {
+collection MonCXX::connectCol(string coll_name = CUR_COLLECTION) {
     cout << "connect to collection: " << CUR_COLLECTION << "...";
     this->col = this->db[CUR_COLLECTION];
     cout << "success." << endl;

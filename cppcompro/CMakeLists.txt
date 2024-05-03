@@ -5,6 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 # 在此处添加相关文件
 set(SOURCE_FILES
         src/main.cpp
+        src/util/mongo-op.hpp
+        src/util/mongo-con.hpp
+        src/conf/user.h
+        src/conf/other.h
 )
 include_directories(
         "src/util"
