@@ -7,5 +7,14 @@ themes/classic/views/
 
 .idea/
 cppcompro/.idea
-
+cppcompro/bin
+cppcompro/cmake-build-debug-visual-studio
+cppcompro/cmake-build-debug-vs
+cppcompro/src/config/user.h
+assets/*
+!assets/.gitignore
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/data/*.db
+themes/classic/views/
 pyrep/build
