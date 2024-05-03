@@ -1,6 +1,7 @@
 .idea/
 cppcompro/.idea
-cppcompro/cmake-build-debug-mingw
+cppcompro/bin
+cppcompro/cmake-build-debug-visual-studio
 cppcompro/cmake-build-debug-vs
 cppcompro/src/config/user.h
 assets/*

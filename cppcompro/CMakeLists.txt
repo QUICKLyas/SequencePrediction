@@ -25,12 +25,10 @@ include_directories(${INCS_DIR})
 link_directories(${LIBS_DIR})
 include_directories(${BOOST_DIR})
 link_directories(${BOOST_LIB_DIR})
-#include_directories(include)
-# important sentence , get lib file
-#link_libraries(mongoc.lib mongocxx.lib bson.lib bsoncxx.lib)
+link_libraries(mongoc.lib mongocxx.lib bson.lib bsoncxx.lib)
 #设置编译文件
 add_executable(demo ${SOURCE_FILES})
-target_link_libraries(demo mongocxx.dll bsoncxx.dll)
+target_link_libraries(demo mongocxx.dll bsoncxx.dll mongoc.dll bson.dll)
 #target_link_libraries()
 #target_link_libraries(plugins plugins)
 
