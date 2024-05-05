@@ -12,6 +12,10 @@ class TestCase(unittest.TestCase):
         db.drop_one_coll()
         self.assertEqual(True, True)  # add assertion here
 
+    def test_update_old_list_data(self, db=DB()):
+        db.update_new_list_data()
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
