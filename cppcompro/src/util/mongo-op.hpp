@@ -21,7 +21,7 @@ public:
     auto insertOneDoc();
     auto insertMulDoc();
     // find
-    auto findSingleDoc(collection);
+    auto findSingleDoc(collection &);
     auto findAllDoc();
     auto printAllDoc();
     auto findByFilter();
@@ -35,18 +35,16 @@ public:
     ~MonCxxOP();
 
 };
-auto MonCxxOP::findSingleDoc(collection col) {
+MonCxxOP::MonCxxOP() {
+    cout << "object MonCxxOP is being created!" << endl;
+}
+auto MonCxxOP::findSingleDoc(collection & col) {
     auto find_one_result = col.find_one({});
     if (find_one_result) {
-
+        // TODO
     }
-    assert(find_one_result);
-}
-MonCxxOP::MonCxxOP() {
-    cout << "object is being created!" << endl;
-
 }
 MonCxxOP::~MonCxxOP() {
-    cout << "object is being deleted!" << endl;
+    cout << "object MonCxxOP is being deleted!" << endl;
 }
 #endif //WEBREP_PY_MONGO_OPERATOR_HPP

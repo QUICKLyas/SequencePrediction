@@ -36,30 +36,46 @@ private:
     database db; // stowed database
     collection col; // stowed collection
 public:
-    database connectDB(string);// get database connection by database name(string)
-    collection connectCol(string); // get collection connection by collection name (string)
+    database * connectDB(bsoncxx::string::view_or_value);// get database connection by database name(string)
+    collection * connectCol(bsoncxx::string::view_or_value); // get collection connection by collection name (string)
+    collection * connectColBOnce(bsoncxx::string::view_or_value,
+                                 bsoncxx::string::view_or_value); // connect by one step
+    // op
+    /*
+     *
+     */
+    auto opFindSingleDoc(collection &);
     MonCXX();
     ~MonCXX();
 };
 MonCXX::MonCXX() {
-    cout << "object is being created" <<endl;
+    cout << "object MonCXX is being created..." << endl;
     connect_uri = uri(URI);
     single_client = client(connect_uri);
 }
-database MonCXX::connectDB(string db_name = CUR_DB) {
-    cout << "connect to database: " << CUR_DB << "...";
-    this->db = single_client[db_name];
+database * MonCXX::connectDB(bsoncxx::string::view_or_value db_name = CUR_DB) {
+    cout << "connect to database: " << db_name.data() << "...";
+    this->db = single_client.database(db_name);
     cout << "success." << endl;
-    return this->db;
+    return & this->db;
 }
-collection MonCXX::connectCol(string coll_name = CUR_COLLECTION) {
-    cout << "connect to collection: " << CUR_COLLECTION << "...";
-    this->col = this->db[CUR_COLLECTION];
+collection * MonCXX::connectCol(bsoncxx::string::view_or_value coll_name = CUR_COLLECTION) {
+    cout << "connect to collection: " << coll_name.data() << "...";
+    this->col = this->db.collection(coll_name);
     cout << "success." << endl;
-    return this->col;
+    return & this->col;
 }
+collection * MonCXX::connectColBOnce(
+        bsoncxx::string::view_or_value db_name = CUR_DB,
+        bsoncxx::string::view_or_value coll_name = CUR_COLLECTION) {
+    cout << "connect to collection: " << db_name.data() << "->" << coll_name.data() << "...";
+    this->db = * this->connectDB(db_name);
+    this->col = * this->connectCol(coll_name);
+    return & this->col;
+}
+
 MonCXX::~MonCXX(){
-    cout << "object is being deleted!" << endl;
+    cout << "object MonCXX is being deleted!" << endl;
 }
 class MonC{
 private:
@@ -68,9 +84,9 @@ public:
     ~MonC();
 };
 MonC::MonC(){
-    cout << "object is being created" <<endl;
+    cout << "object MonC is being created" <<endl;
 }
 MonC::~MonC(){
-    cout << "object is being deleted!" << endl;
+    cout << "object MonC is being deleted!" << endl;
 }
 #endif //WEBREP_PY_MONGO_CON_HPP
