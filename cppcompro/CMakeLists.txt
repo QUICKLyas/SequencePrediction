@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 cmake_minimum_required(VERSION 3.27)
 project(cppcompro)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(cppcompro main.cpp)
-=======
 cmake_minimum_required(VERSION 3.10)
 project(cppcompro)
 
@@ -117,4 +114,3 @@ target_link_libraries(demo mongocxx.dll bsoncxx.dll mongoc.dll bson.dll)
 ##        ${PROJECT_SOURCE_DIR}/lib/mongoc-1.0.lib
 ##        ${PROJECT_SOURCE_DIR}/lib/mongocxx-v_noabi-dhs-x64-v143-mdd.lib
 ##)
->>>>>>> master
