@@ -14,7 +14,7 @@ set(SOURCE_FILES
         src/util/mongo-con.hpp
         src/conf/user.h
         src/conf/other.h
-        src/util/timer.h
+        src/util/owner-timer.h
 )
 include_directories(
         "src/util"
