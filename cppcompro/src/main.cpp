@@ -1,8 +1,8 @@
-#include <owner-timer.h>
-#include <iostream>
+#include "owner-timer.h"
+
 using namespace std;
 int main()
 {
-    getUserName();
+    printTime();
     return 0;
 }
