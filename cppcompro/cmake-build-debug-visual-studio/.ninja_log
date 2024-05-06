@@ -1,3 +1,5 @@
 # ninja log v5
-6	1101	7366160107779314	CMakeFiles/demo.dir/src/main.cpp.obj	21f90439790341dc
-1101	1440	7366160110503998	F:/IDE/_CodeSpace/SequencePrediction/cppcompro/bin/demo.exe	bde3ac6d5103076a
+5	617	7366772499647561	CMakeFiles/demo.dir/src/main.cpp.obj	21f90439790341dc
+617	1116	7366772504012371	F:/IDE/_CodeSpace/SequencePrediction/cppcompro/bin/demo.exe	bde3ac6d5103076a
+1	154	7366772984753570	build.ninja	bb50ec3850ad8e9c
+0	147	7366772984753570	build.ninja	bb50ec3850ad8e9c

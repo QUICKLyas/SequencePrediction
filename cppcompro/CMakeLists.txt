@@ -39,8 +39,7 @@ link_libraries(mongoc.lib mongocxx.lib bson.lib bsoncxx.lib)
 #设置编译文件
 add_executable(demo ${SOURCE_FILES})
 target_link_libraries(demo mongocxx.dll bsoncxx.dll mongoc.dll bson.dll)
-#target_link_libraries()
-#target_link_libraries(plugins plugins)
+
 
 #find_package(mongocxx REQUIRED)
 ## 配置的外部库文件 本地目录，方便使用
