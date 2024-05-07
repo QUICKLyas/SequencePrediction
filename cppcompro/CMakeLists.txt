@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCE_FILES
         src/main.cpp
         src/util/mongo-op.hpp
-        src/util/mongo-con.hpp
+        src/util/mongo-con.h
         src/conf/user.h
         src/conf/other.h
         src/util/owner-timer.h

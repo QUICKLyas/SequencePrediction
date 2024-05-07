@@ -69,7 +69,7 @@ static void printTime() {
     std::cout << time << weekday << "/"
         << year << "/" << month << "/" << localtime.tm_mday << "-"
         << localtime.tm_hour << ":" << localtime.tm_min << ":" << localtime.tm_sec << "]"
-        << "=>";
+        << " => ";
     /*
     tm gmtm;
     gmtime_s(&gmtm, &now);
@@ -79,7 +79,7 @@ static void printTime() {
 }
 
 static void printUserHost() {
-    std::cout << getUserName() << "@" << getPcName() <<"=>";
+    std::cout << getUserName() << "@" << getPcName() <<" => ";
 }
 static void printLabel() {
     printTime();
