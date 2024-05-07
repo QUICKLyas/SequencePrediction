@@ -8,6 +8,6 @@ int main()
     MonCxxOP monCxxOp;
     monCxx.connectDB();
     monCxx.connectCol();
-    monCxxOp.findAllDoc((*monCxx.getCollection()));
+    monCxxOp.findAllDoc((*monCxx.getCollection()), {},30);
     return 0;
 }

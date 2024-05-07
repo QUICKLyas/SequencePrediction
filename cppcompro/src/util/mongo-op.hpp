@@ -7,6 +7,7 @@
 #include <iostream>
 #include <mongocxx/collection.hpp>
 #include <bsoncxx/json.hpp>
+#include <utility>
 #include "mongo-con.h"
 #include "owner-timer.h"
 using namespace mongocxx;
@@ -16,6 +17,8 @@ class MonCOP;
 
 class MonCxxOP{
 private:
+    std::vector<std::vector<int>> pre_data; // stowed number from database array 1-35 1-12
+    std::vector<std::vector<int>> rear_data;
 public:
     // find
     /*
@@ -24,9 +27,10 @@ public:
     static bool insertOneDoc(collection &, const bsoncxx::document::value&);
     bool insertMulDoc(collection &, const std::vector<bsoncxx::document::value>&);
     // find
-    auto findSingleDoc(mongocxx::collection &);
-    auto findAllDoc(mongocxx::collection &);
-    auto printDoc(cursor & );
+    auto findSingleDoc(mongocxx::collection &, bsoncxx::document::view_or_value);
+    auto findAllDoc(mongocxx::collection &,  bsoncxx::document::view_or_value, const int);
+    void printDoc(const bsoncxx::document::view &);
+    auto printBatchDoc(cursor);
     auto findByFilter();
     // update
     bool updateSingleDoc(collection &, bsoncxx::document::view_or_value, bsoncxx::document::view_or_value);
@@ -46,14 +50,32 @@ MonCxxOP::MonCxxOP() {
     printTime();
     std::cout << "object MonCxxOP is being created!" << std::endl;
 }
-auto MonCxxOP::printDoc(mongocxx::cursor & list_cursor) {
-    printTime();
-    std::cout << "<=" << std::endl;
-    for (auto doc : list_cursor) {
-        // TODO
+
+void MonCxxOP::printDoc(const bsoncxx::document::view & doc) {
+    /*
+     * three item : issue | openTime | WinnningNum(Array)
+     */
+    std::string issue = doc["issue"].get_string().value.to_string();
+    std::string openTime = doc["openTime"].get_string().value.to_string();
+    auto tmpWinNum = doc["WinningNum"].get_array();
+    std::vector<int> winNum;
+    for (auto & item : tmpWinNum.value) {
+        int num = item.get_int32();
+        winNum.push_back(num);
+    }
+    std::ostream_iterator<int> iterator(std::cout, ",");
+    std::cout << "[" << issue << "] \t [" << openTime << "] \t [";
+    std::copy(winNum.begin(), winNum.end(), iterator);
+    std::cout << "]" << std::endl;
+}
+auto MonCxxOP::printBatchDoc(cursor cursor_a) {
+    if (cursor_a.begin() != cursor_a.end()) {
+        for (const bsoncxx::document::view doc : cursor_a) {
+            printDoc(doc);
+        }
     }
 }
-auto MonCxxOP::findSingleDoc(mongocxx::collection & coll) {
+auto MonCxxOP::findSingleDoc(mongocxx::collection & coll, bsoncxx::document::view_or_value filter) {
     printTime();
     bsoncxx::stdx::optional<bsoncxx::document::value> find_one_result = coll.find_one({});
     assert(find_one_result);
@@ -62,23 +84,13 @@ auto MonCxxOP::findSingleDoc(mongocxx::collection & coll) {
     }
     return find_one_result;
 }
-auto MonCxxOP::findAllDoc(mongocxx::collection & coll){
+auto MonCxxOP::findAllDoc(mongocxx::collection & coll, bsoncxx::document::view_or_value filter,const int skip_pages){
     printTime();
-    auto cursor_all = coll.find({});
+    options::find options = options::find().limit(30).skip(skip_pages);
+    cursor cursor_all = coll.find(std::move(filter), options);
     std::cout << "collection " << coll.name()
          << " contains these documents:" << std::endl;
-    if (cursor_all.begin() != cursor_all.end()) {
-        for (auto & doc : cursor_all) {
-            std::string issue = doc["issue"].get_string().value.to_string();
-            std::cout << "find : issue" << "] name [" << issue << "]"  << std::endl;
-//            std::cout << "\t\t" << bsoncxx::to_json(doc, bsoncxx::ExtendedJsonMode::k_relaxed) << std::endl;
-        }
-    }
-//    std::cout << std::is_partitioned(cursor_all.begin(), cursor_all.end(),'a');
-//    for (auto doc : cursor_all) {
-//        std::cout << "\t\t" << bsoncxx::to_json(doc, bsoncxx::ExtendedJsonMode::k_relaxed) << std::endl;
-//    }
-    return cursor_all;
+    printBatchDoc( coll.find(std::move(filter), options));
 }
 bool MonCxxOP::insertOneDoc(collection & col, const bsoncxx::document::value& filter) {
     bsoncxx::document::value json_doc = make_document(kvp("id",0));
