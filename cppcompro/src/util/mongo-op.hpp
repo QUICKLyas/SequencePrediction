@@ -7,7 +7,7 @@
 #include <iostream>
 #include <mongocxx/collection.hpp>
 #include <bsoncxx/json.hpp>
-
+#include "mongo-con.h"
 #include "owner-timer.h"
 using namespace mongocxx;
 // abstract class
@@ -16,7 +16,6 @@ class MonCOP;
 
 class MonCxxOP{
 private:
-
 public:
     // find
     /*
@@ -25,8 +24,8 @@ public:
     static bool insertOneDoc(collection &, const bsoncxx::document::value&);
     bool insertMulDoc(collection &, const std::vector<bsoncxx::document::value>&);
     // find
-    auto findSingleDoc(MonCXX &);
-    auto findAllDoc(MonCXX &);
+    auto findSingleDoc(mongocxx::collection &);
+    auto findAllDoc(mongocxx::collection &);
     auto printDoc(cursor & );
     auto findByFilter();
     // update
@@ -36,6 +35,9 @@ public:
     bool delSinDoc(collection &, bsoncxx::document::view_or_value);
     bool delAllDocByF(collection &, bsoncxx::document::view_or_value);
     // index -- improve query efficiency
+
+    friend class MonCXX;
+
     MonCxxOP();
     ~MonCxxOP();
 
@@ -49,28 +51,33 @@ auto MonCxxOP::printDoc(mongocxx::cursor & list_cursor) {
     std::cout << "<=" << std::endl;
     for (auto doc : list_cursor) {
         // TODO
-        printTime();
-        assert(doc["_id"].type() == bsoncxx::type::k_oid);
-        std::cout << "\t\t" << bsoncxx::to_json(doc, bsoncxx::ExtendedJsonMode::k_relaxed) << std::endl;
     }
 }
-auto MonCxxOP::findSingleDoc(MonCXX & monCxx) {
+auto MonCxxOP::findSingleDoc(mongocxx::collection & coll) {
     printTime();
-    bsoncxx::stdx::optional<bsoncxx::document::value> find_one_result = (*monCxx.getCollection()).find_one({});
+    bsoncxx::stdx::optional<bsoncxx::document::value> find_one_result = coll.find_one({});
     assert(find_one_result);
     if (find_one_result) {
         // TODO
     }
     return find_one_result;
 }
-auto MonCxxOP::findAllDoc(MonCXX & monCxx){
-    auto cursor_all = monCxx.getCollection()->find({});
-//    assert(std::count(cursor_all.begin(), cursor_all.end()));
-    std::cout << "collection " << monCxx.getCollection()->name()
+auto MonCxxOP::findAllDoc(mongocxx::collection & coll){
+    printTime();
+    auto cursor_all = coll.find({});
+    std::cout << "collection " << coll.name()
          << " contains these documents:" << std::endl;
-    for (auto doc : cursor_all) {
-        std::cout << "\t\t" << bsoncxx::to_json(doc, bsoncxx::ExtendedJsonMode::k_relaxed) << std::endl;
+    if (cursor_all.begin() != cursor_all.end()) {
+        for (auto & doc : cursor_all) {
+            std::string issue = doc["issue"].get_string().value.to_string();
+            std::cout << "find : issue" << "] name [" << issue << "]"  << std::endl;
+//            std::cout << "\t\t" << bsoncxx::to_json(doc, bsoncxx::ExtendedJsonMode::k_relaxed) << std::endl;
+        }
     }
+//    std::cout << std::is_partitioned(cursor_all.begin(), cursor_all.end(),'a');
+//    for (auto doc : cursor_all) {
+//        std::cout << "\t\t" << bsoncxx::to_json(doc, bsoncxx::ExtendedJsonMode::k_relaxed) << std::endl;
+//    }
     return cursor_all;
 }
 bool MonCxxOP::insertOneDoc(collection & col, const bsoncxx::document::value& filter) {

@@ -7,6 +7,7 @@ int main()
     MonCXX monCxx ;
     MonCxxOP monCxxOp;
     monCxx.connectDB();
-    monCxxOp.findAllDoc(monCxx);
+    monCxx.connectCol();
+    monCxxOp.findAllDoc((*monCxx.getCollection()));
     return 0;
 }
