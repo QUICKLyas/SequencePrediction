@@ -8,8 +8,10 @@
 #include <mongocxx/collection.hpp>
 #include <bsoncxx/json.hpp>
 #include <utility>
-#include "mongo-con.h"
+#include "data-probability.hpp"
 #include "owner-timer.h"
+#include "../entity/data-probability.hpp"
+
 using namespace mongocxx;
 // abstract class
 class MonCxxOP;
@@ -17,8 +19,7 @@ class MonCOP;
 
 class MonCxxOP{
 private:
-    std::vector<std::vector<int>> pre_data; // stowed number from database array 1-35 1-12
-    std::vector<std::vector<int>> rear_data;
+
 public:
     // find
     /*
@@ -28,9 +29,10 @@ public:
     bool insertMulDoc(collection &, const std::vector<bsoncxx::document::value>&);
     // find
     auto findSingleDoc(mongocxx::collection &, bsoncxx::document::view_or_value);
-    auto findAllDoc(mongocxx::collection &,  bsoncxx::document::view_or_value, const int);
+    DataSample * findAllDoc(mongocxx::collection &,  bsoncxx::document::view_or_value, const int);
     void printDoc(const bsoncxx::document::view &);
-    auto printBatchDoc(cursor);
+    auto printBatchDoc(cursor &);
+    void screamOutString (std::string, std::string, std::vector<int>);
     auto findByFilter();
     // update
     bool updateSingleDoc(collection &, bsoncxx::document::view_or_value, bsoncxx::document::view_or_value);
@@ -39,8 +41,9 @@ public:
     bool delSinDoc(collection &, bsoncxx::document::view_or_value);
     bool delAllDocByF(collection &, bsoncxx::document::view_or_value);
     // index -- improve query efficiency
-
-    friend class MonCXX;
+    // other
+    void getAllNumFromDataS(vector<vector<int>> &,vector<vector<int>> &);
+    DataSample dataSample;
 
     MonCxxOP();
     ~MonCxxOP();
@@ -50,7 +53,12 @@ MonCxxOP::MonCxxOP() {
     printTime();
     std::cout << "object MonCxxOP is being created!" << std::endl;
 }
-
+void screamOutString (std::string issue = "", std::string openTime ="", std::vector<int> winNum= {0}){
+    std::ostream_iterator<int> iterator(std::cout, ",");
+    std::cout << "[" << issue << "] -> [" << openTime << "] -> [";
+    std::copy(winNum.begin(), winNum.end(), iterator);
+    std::cout << "]" << std::endl;
+}
 void MonCxxOP::printDoc(const bsoncxx::document::view & doc) {
     /*
      * three item : issue | openTime | WinnningNum(Array)
@@ -63,15 +71,17 @@ void MonCxxOP::printDoc(const bsoncxx::document::view & doc) {
         int num = item.get_int32();
         winNum.push_back(num);
     }
-    std::ostream_iterator<int> iterator(std::cout, ",");
-    std::cout << "[" << issue << "] \t [" << openTime << "] \t [";
-    std::copy(winNum.begin(), winNum.end(), iterator);
-    std::cout << "]" << std::endl;
+    ::screamOutString(issue, openTime, winNum);
+    std::vector<int> item_pre(winNum.begin(),winNum.begin()+5);
+    this->dataSample.setPreNum(item_pre);
+    std::vector item_rear(winNum.begin()+5,winNum.begin()+7);
+    this->dataSample.setPreNum(item_rear);
 }
-auto MonCxxOP::printBatchDoc(cursor cursor_a) {
+auto MonCxxOP::printBatchDoc(mongocxx::cursor & cursor_a) {
     if (cursor_a.begin() != cursor_a.end()) {
         for (const bsoncxx::document::view doc : cursor_a) {
             printDoc(doc);
+            break;
         }
     }
 }
@@ -81,16 +91,18 @@ auto MonCxxOP::findSingleDoc(mongocxx::collection & coll, bsoncxx::document::vie
     assert(find_one_result);
     if (find_one_result) {
         // TODO
+        printDoc(find_one_result->view());
     }
     return find_one_result;
 }
-auto MonCxxOP::findAllDoc(mongocxx::collection & coll, bsoncxx::document::view_or_value filter,const int skip_pages){
+DataSample * MonCxxOP::findAllDoc(mongocxx::collection & coll, bsoncxx::document::view_or_value filter,const int skip_pages){
     printTime();
     options::find options = options::find().limit(30).skip(skip_pages);
-    cursor cursor_all = coll.find(std::move(filter), options);
+    cursor cur_all = coll.find(std::move(filter), options);
     std::cout << "collection " << coll.name()
          << " contains these documents:" << std::endl;
-    printBatchDoc( coll.find(std::move(filter), options));
+    printBatchDoc(cur_all);
+    return & this->dataSample;
 }
 bool MonCxxOP::insertOneDoc(collection & col, const bsoncxx::document::value& filter) {
     bsoncxx::document::value json_doc = make_document(kvp("id",0));
@@ -147,4 +159,10 @@ MonCxxOP::~MonCxxOP() {
     printTime();
     std::cout << "object MonCxxOP is being deleted!" << std::endl;
 }
+//other
+void MonCxxOP::getAllNumFromDataS(vector<vector<int>> & item_pre,vector<vector<int>> & item_rear){
+    item_pre = * this->dataSample.getPreNum();
+    item_rear = * this->dataSample.getRearNum();
+}
+
 #endif //WEBREP_PY_MONGO_OPERATOR_HPP

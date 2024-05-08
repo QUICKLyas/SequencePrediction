@@ -11,14 +11,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCE_FILES
         src/main.cpp
         src/util/mongo-op.hpp
-        src/util/mongo-con.h
+        src/util/mongo-con.hpp
         src/conf/user.h
         src/conf/other.h
         src/util/owner-timer.h
+        src/entity/data-probability.hpp
 )
 include_directories(
         "src/util"
         "src/conf"
+        "src/entity"
 )
 
 

@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_demo: phony || CMakeFiles\demo.dir
 
 build CMakeFiles\demo.dir\src\main.cpp.obj: CXX_COMPILER__demo_unscanned_Debug F$:\IDE\_CodeSpace\SequencePrediction\cppcompro\src\main.cpp || cmake_object_order_depends_target_demo
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd -Zi
-  INCLUDES = -IF:\IDE\_CodeSpace\SequencePrediction\cppcompro\src\util -IF:\IDE\_CodeSpace\SequencePrediction\cppcompro\src\conf -IF:\tool\CXXPlugins\additional\includes -IF:\tool\CXXPlugins\boost\b2-install\boost-vc143\include
+  INCLUDES = -IF:\IDE\_CodeSpace\SequencePrediction\cppcompro\src\util -IF:\IDE\_CodeSpace\SequencePrediction\cppcompro\src\conf -IF:\IDE\_CodeSpace\SequencePrediction\cppcompro\src\entity -IF:\tool\CXXPlugins\additional\includes -IF:\tool\CXXPlugins\boost\b2-install\boost-vc143\include
   OBJECT_DIR = CMakeFiles\demo.dir
   OBJECT_FILE_DIR = CMakeFiles\demo.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\demo.dir\
