@@ -42,7 +42,7 @@ public:
     bool delAllDocByF(collection &, bsoncxx::document::view_or_value);
     // index -- improve query efficiency
     // other
-    void getAllNumFromDataS(vector<vector<int>> &,vector<vector<int>> &);
+    DataSample * getDataSample();
     DataSample dataSample;
 
     MonCxxOP();
@@ -51,6 +51,7 @@ public:
 };
 MonCxxOP::MonCxxOP() {
     printTime();
+    dataSample = DataSample();
     std::cout << "object MonCxxOP is being created!" << std::endl;
 }
 void screamOutString (std::string issue = "", std::string openTime ="", std::vector<int> winNum= {0}){
@@ -71,17 +72,14 @@ void MonCxxOP::printDoc(const bsoncxx::document::view & doc) {
         int num = item.get_int32();
         winNum.push_back(num);
     }
-    ::screamOutString(issue, openTime, winNum);
-    std::vector<int> item_pre(winNum.begin(),winNum.begin()+5);
-    this->dataSample.setPreNum(item_pre);
-    std::vector item_rear(winNum.begin()+5,winNum.begin()+7);
-    this->dataSample.setPreNum(item_rear);
+//    ::screamOutString(issue, openTime, winNum);
+    std::vector<int> item_data(winNum.begin(),winNum.begin()+7);
+    this->dataSample.setSourceData(item_data);
 }
 auto MonCxxOP::printBatchDoc(mongocxx::cursor & cursor_a) {
     if (cursor_a.begin() != cursor_a.end()) {
         for (const bsoncxx::document::view doc : cursor_a) {
             printDoc(doc);
-            break;
         }
     }
 }
@@ -160,9 +158,8 @@ MonCxxOP::~MonCxxOP() {
     std::cout << "object MonCxxOP is being deleted!" << std::endl;
 }
 //other
-void MonCxxOP::getAllNumFromDataS(vector<vector<int>> & item_pre,vector<vector<int>> & item_rear){
-    item_pre = * this->dataSample.getPreNum();
-    item_rear = * this->dataSample.getRearNum();
+DataSample * MonCxxOP::getDataSample(){
+    return  & this->dataSample;
 }
 
 #endif //WEBREP_PY_MONGO_OPERATOR_HPP

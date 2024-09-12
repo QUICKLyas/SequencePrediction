@@ -12,6 +12,6 @@
 ### Python Compile and Run
 
 + Compile: pyinstaller main.spec
-+ main.spec 中 hiddenimports 写入需要引入的包文件地址，地址以pyrep为基地址
++ main.spec 中 hiddenimports 写入需要引入的包文件地址，地址以src为基地址
 + Run: ./main.exe 或者直接点击运行
 + 使用pip 指令可以安装缺少的第三方依赖包
